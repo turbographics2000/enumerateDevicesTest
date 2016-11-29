@@ -8,7 +8,7 @@ navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
       btn.onclick = function () {
         changeDdevice(this.dataset.deviceId);
       }
-      btnContainer.appendChild(btn);
+      btnDeviceIdContainer.appendChild(btn);
     });
     res.textContent = JSON.stringify(devices, null, 2);
   });
