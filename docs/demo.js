@@ -5,7 +5,7 @@ navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
       let btn = document.createElement('button');
       btn.textContent = device.label;
       btn.dataset.deviceId = device.deviceId;
-      btn.oclick = function() {
+      btn.onclick = function() {
         changeDdevice(this.dataset.deviceId);
       }
       btnContainer.appendChild(btn);
