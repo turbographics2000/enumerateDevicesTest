@@ -25,6 +25,10 @@
           facingMode: facingMode
         }).then(stream => preview.srcObject = stream);
       }
+      btnUser.onclick = _ => changeFacingMode('user');
+      btnEnvironment.onclick = _ => changeFracingMode('environment');
+      btnLeft.onclick = _ => changeFacingMode('left');
+      btnRight.onclick = _ => changeFacingMode('right');
     </script>
   </body>
 </html>
