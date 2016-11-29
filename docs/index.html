@@ -25,7 +25,7 @@
         }
         navigator.mediaDevices.getUserMedia({
           video: {
-            facingMode: 'back',
+            facingMode: facingMode,
           }
         }).then(stream => preview.srcObject = stream);
       }
