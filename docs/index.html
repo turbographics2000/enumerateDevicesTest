@@ -6,17 +6,26 @@
   </head>
   <body>
     <video id="preview" autoplay style="width: 50%"></video>
-    <button id="btnUser">user(front)</button>
-    <button id="btnEnvironment">environment(back)</button>
-    <button id="btnLeft">left</button>
-    <button id="btnRight">right</button>
-    <button id="btnFront">front</button>
-    <button id="btnBack">back</button>
+    <div id="btnContainer">
+      <button id="btnUser">user(front)</button>
+      <button id="btnEnvironment">environment(back)</button>
+      <button id="btnLeft">left</button>
+      <button id="btnRight">right</button>
+      <button id="btnFront">front</button>
+      <button id="btnBack">back</button>
+    </div>
     <pre id="res"></pre>
     <script>
       navigator.mediaDevices.getUserMedia({video:true}).then(stream => {
         preview.srcObject = stream;
-        navigator.mediaDevices.enumerateDevices().then(devices => res.textContent = JSON.stringify(devices, null, 2));
+        navigator.mediaDevices.enumerateDevices().then(devices => {
+          devices.forEach(device => {
+            let btn = document.createElement('button');
+            btn.textContent = device.label;
+            btn.dataset.deviceId = device.deviceId;
+          });
+          res.textContent = JSON.stringify(devices, null, 2))
+        };
       });
       function changeFacingMode(facingMode) {
         if(preview.srcObject) {
@@ -30,6 +39,11 @@
           }
         }).then(stream => preview.srcObject = stream);
       }
+        function changeDdevice(deviceId) {
+        navigator.mediaDevices.getUserMedia({
+          deviceId: deviceId
+        }).then(stream => preview.srcObject = stream);
+        }
       btnUser.onclick = _ => changeFacingMode('user');
       btnEnvironment.onclick = _ => changeFacingMode('environment');
       btnLeft.onclick = _ => changeFacingMode('left');
