@@ -26,6 +26,7 @@
         navigator.mediaDevices.getUserMedia({
           video: {
             facingMode: {exact: facingMode},
+            optional: [{facingMode: facingMode}]
           }
         }).then(stream => preview.srcObject = stream);
       }
