@@ -9,7 +9,7 @@
     <pre id="res"></pre>
     <script>
       navigator.mediaDevices.getUserMedia({video:true}).then(stream => {
-        video.srcObject = stream;
+        preview.srcObject = stream;
         navigator.mediaDevices.enumerateDevices().then(devices => res.textContent = JSON.stringify(devices, null, 2));
       });
     </script>
