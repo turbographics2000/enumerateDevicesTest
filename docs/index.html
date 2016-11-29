@@ -2,11 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
+    <video id="preview" autoplay></video>
     <pre id="res"></pre>
     <script>
-      navigator.mediaDevices.enumerateDevices().then(devices => res.textContent = JSON.stringify(devices, null, 2));
+      navigator.mediaDevices().getUserMedia({video:true}).then(stream => {
+        video.srcObject = stream;
+        navigator.mediaDevices.enumerateDevices().then(devices => res.textContent = JSON.stringify(devices, null, 2));
+      });
     </script>
   </body>
 </html>
