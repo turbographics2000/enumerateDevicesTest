@@ -5,7 +5,7 @@ navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
       let btn = document.createElement('button');
       btn.textContent = device.label;
       btn.dataset.deviceId = device.deviceId;
-      btn.onclick = function() {
+      btn.onclick = function () {
         changeDdevice(this.dataset.deviceId);
       }
       btnContainer.appendChild(btn);
@@ -31,7 +31,9 @@ function changeDdevice(deviceId) {
     preview.srcObject = null;
   }
   navigator.mediaDevices.getUserMedia({
-    deviceId: deviceId
+    video: {
+      deviceId: deviceId
+    }
   }).then(stream => preview.srcObject = stream);
 }
 btnUser.onclick = _ => changeFacingMode('user');
