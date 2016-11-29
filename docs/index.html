@@ -6,12 +6,25 @@
   </head>
   <body>
     <video id="preview" autoplay style="width: 50%"></video>
+    <button id="btnUser">user(fron)</button>
+    <button id="btnEnvironment">environment(back)</button>
+    <button id="btnLeft">left</button>
+    <button id="btnRight">right</button>
     <pre id="res"></pre>
     <script>
       navigator.mediaDevices.getUserMedia({video:true}).then(stream => {
         preview.srcObject = stream;
         navigator.mediaDevices.enumerateDevices().then(devices => res.textContent = JSON.stringify(devices, null, 2));
       });
+      function changeFacingMode(facingMode) {
+        if(preview.srcObject) {
+          preview.srcObject.getTracks().forEach(track => track.stop());
+          preview.srcObject = null;
+        }
+        navigator.mediaDevices.getUserMedia({
+          facingMode: facingMode
+        }).then(stream => preview.srcObject = stream);
+      }
     </script>
   </body>
 </html>
