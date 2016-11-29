@@ -22,7 +22,9 @@
           preview.srcObject = null;
         }
         navigator.mediaDevices.getUserMedia({
-          facingMode: facingMode
+          video: {
+            facingMode: facingMode
+          }
         }).then(stream => preview.srcObject = stream);
       }
       btnUser.onclick = _ => changeFacingMode('user');
