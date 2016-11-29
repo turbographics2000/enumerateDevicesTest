@@ -8,7 +8,7 @@
     <video id="preview" autoplay></video>
     <pre id="res"></pre>
     <script>
-      navigator.mediaDevices().getUserMedia({video:true}).then(stream => {
+      navigator.mediaDevices.getUserMedia({video:true}).then(stream => {
         video.srcObject = stream;
         navigator.mediaDevices.enumerateDevices().then(devices => res.textContent = JSON.stringify(devices, null, 2));
       });
