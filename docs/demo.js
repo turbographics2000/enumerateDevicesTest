@@ -20,8 +20,7 @@ function changeFacingMode(facingMode) {
   }
   navigator.mediaDevices.getUserMedia({
     video: {
-      facingMode: { exact: facingMode },
-      optional: [{ facingMode: facingMode }]
+      facingMode: facingMode
     }
   }).then(stream => preview.srcObject = stream);
 }
