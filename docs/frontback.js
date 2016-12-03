@@ -8,6 +8,6 @@ navigator.mediaDevices.enumerateDevices().then(devices => {
         })
     })).then(streams => {
         var previews = document.querySelectorAll('.preview');
-        streams.forEach((stream, i) => preview[i].srcObject = stream);
+        streams.forEach((stream, i) => previews[i].srcObject = stream);
     });
 });
