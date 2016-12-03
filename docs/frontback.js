@@ -1,7 +1,7 @@
 navigator.mediaDevices.enumerateDevices().then(devices => {
     var videoDivices = devices.filter(device => device.kind === 'videoinput');
     Promise.all(videoDivices.map(device => {
-        navigator.mediaDevices.getUserMedia({
+        return navigator.mediaDevices.getUserMedia({
             video: {
                 deviceId: device.deviceId
             }
